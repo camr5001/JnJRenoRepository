@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="JNJ Renovations - Browse our bathroom, basement, and kitchen renovation photos">
+  <title>JNJ Renovations - Project Gallery</title>
+
+  <style>
+    /* CSS Reset & Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-navy: #1e3a8a;
+      --primary-navy-dark: #1e40af;
+      --primary-navy-light: #3b82f6;
+      --white: #ffffff;
+      --neutral-50: #f8fafc;
+      --neutral-100: #f1f5f9;
+      --neutral-200: #e2e8f0;
+      --neutral-600: #475569;
+      --neutral-700: #334155;
+      --neutral-800: #1e293b;
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      --transition-base: 300ms ease;
+      --transition-slow: 500ms ease;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--neutral-800);
+      background-color: var(--white);
+    }
+
+    /* Header Section */
+    .gallery-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 5rem 1rem;
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .gallery-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--neutral-800);
+      margin-bottom: 1rem;
+    }
+
+    .gallery-title .highlight {
+      color: var(--primary-navy);
+    }
+
+    .gallery-description {
+      font-size: 1.25rem;
+      color: var(--neutral-600);
+      max-width: 48rem;
+      margin: 0 auto;
+    }
+
+    /* Category Navigation */
+    .category-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .category-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 0.75rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      background-color: var(--neutral-100);
+      color: var(--neutral-700);
+    }
+
+    .category-btn:hover {
+      background-color: var(--neutral-200);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+
+    .category-btn.active {
+      background-color: var(--primary-navy);
+      color: var(--white);
+      box-shadow: var(--shadow-lg);
+      transform: scale(1.05);
+    }
+
+    .category-icon {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+
+    .category-count {
+      padding: 0.125rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .category-btn:not(.active) .category-count {
+      background-color: var(--neutral-200);
+      color: var(--neutral-700);
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (min-width: 1280px) {
+      .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Gallery Item */
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      box-shadow: var(--shadow-md);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      background-color: var(--neutral-100);
+    }
+
+    .gallery-item:hover {
+      box-shadow: var(--shadow-xl);
+      transform: translateY(-4px);
+    }
+
+    .gallery-item.hidden {
+      display: none;
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.1);
+    }
+
+    /* Gallery Overlay */
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+      opacity: 0;
+      transition: opacity var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1rem;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-caption {
+      color: var(--white);
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .gallery-category {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.75rem;
+      text-transform: capitalize;
+    }
+
+    /* Zoom Icon */
+    .zoom-icon {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition-base);
+    }
+
+    .gallery-item:hover .zoom-icon {
+      opacity: 1;
+    }
+
+    .zoom-icon svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      color: var(--primary-navy);
+    }
+
+    /* Modal Lightbox */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      padding: 1rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      max-width: 72rem;
+      max-height: 90vh;
+      position: relative;
+    }
+
+    .modal-img {
+      max-width: 100%;
+      max-height: 80vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 0.5rem;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .modal-info {
+      margin-top: 1.5rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      color: var(--white);
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .modal-tag {
+      padding: 0.25rem 0.75rem;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 9999px;
+      text-transform: capitalize;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 3rem;
+      height: 3rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color var(--transition-base);
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .modal-close svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      color: var(--white);
+    }
+
+    /* Loading Spinner */
+    .loading-spinner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--neutral-200);
+    }
+
+    .spinner {
+      width: 3rem;
+      height: 3rem;
+      border: 4px solid var(--primary-navy);
+      border-top-color: transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--neutral-600);
+      font-size: 1.125rem;
+      grid-column: 1 / -1;
+    }
+
+    /* Accessibility */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    /* Focus Styles */
+    *:focus-visible {
+      outline: 2px solid var(--primary-navy-light);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+  <main class="gallery-section" id="asset-gallery">
+    <!-- Header -->
+    <header class="gallery-header">
+      <h1 class="gallery-title">
+        Our <span class="highlight">Project Photos</span>
+      </h1>
+      <p class="gallery-description">
+        Browse through our collection of completed renovation projects. Each photo represents quality craftsmanship and attention to detail.
+      </p>
+    </header>
+
+    <!-- Category Navigation -->
+    <nav class="category-nav" aria-label="Gallery categories">
+      <button class="category-btn active" data-category="all" aria-pressed="true">
+        <span>All Photos</span>
+        <span class="category-count">40</span>
+      </button>
+      <button class="category-btn" data-category="bathroom" aria-pressed="false">
+        <svg class="category-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+        </svg>
+        <span>Bathroom</span>
+        <span class="category-count">13</span>
+      </button>
+      <button class="category-btn" data-category="basement" aria-pressed="false">
+        <svg class="category-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        <span>Basement</span>
+        <span class="category-count">13</span>
+      </button>
+      <button class="category-btn" data-category="kitchen" aria-pressed="false">
+        <svg class="category-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+        <span>Kitchen</span>
+        <span class="category-count">13</span>
+      </button>
+    </nav>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid" id="galleryGrid" role="list" aria-label="All renovation photos">
+      <!-- Images will be dynamically inserted here -->
+    </div>
+  </main>
+
+  <!-- Modal Lightbox -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <button class="modal-close" id="modalClose" aria-label="Close modal">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <div class="modal-content">
+      <img class="modal-img" id="modalImg" alt="" />
+      <div class="modal-info">
+        <h2 class="modal-title" id="modal-title"></h2>
+        <div class="modal-meta">
+          <span class="modal-tag" id="modalCategory"></span>
+          <span>Click outside to close</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Image data structure
+    const images = [
+      // Bathroom images (1-13)
+      { src: '/assets/image1.jpeg', alt: 'Modern bathroom with walk-in shower', category: 'bathroom' },
+      { src: '/assets/image2.jpeg', alt: 'Luxury bathroom vanity with marble countertop', category: 'bathroom' },
+      { src: '/assets/image3.jpeg', alt: 'Spa-style bathroom with soaking tub', category: 'bathroom' },
+      { src: '/assets/image4.jpeg', alt: 'Contemporary bathroom with double vanity', category: 'bathroom' },
+      { src: '/assets/image5.jpeg', alt: 'Elegant bathroom with heated floors', category: 'bathroom' },
+      { src: '/assets/image6.jpeg', alt: 'Compact bathroom with clever storage', category: 'bathroom' },
+      { src: '/assets/image7.jpeg', alt: 'Traditional bathroom with clawfoot tub', category: 'bathroom' },
+      { src: '/assets/image8.jpeg', alt: 'Master bathroom with separate shower', category: 'bathroom' },
+      { src: '/assets/image9.jpeg', alt: 'Minimalist bathroom design', category: 'bathroom' },
+      { src: '/assets/image10.jpeg', alt: 'Bathroom with designer tile work', category: 'bathroom' },
+      { src: '/assets/image11.jpeg', alt: 'Powder room renovation', category: 'bathroom' },
+      { src: '/assets/image12.jpeg', alt: 'Guest bathroom with modern fixtures', category: 'bathroom' },
+      { src: '/assets/image13.jpeg', alt: 'Bathroom with custom lighting', category: 'bathroom' },
+
+      // Basement images (14-27)
+      { src: '/assets/image14.jpeg', alt: 'Finished basement with home theater', category: 'basement' },
+      { src: '/assets/image15.jpeg', alt: 'Basement family room with bar area', category: 'basement' },
+      { src: '/assets/image16.jpeg', alt: 'Bright basement with egress windows', category: 'basement' },
+      { src: '/assets/image17.jpeg', alt: 'Basement game room and entertainment area', category: 'basement' },
+      { src: '/assets/image18.jpeg', alt: 'Basement home gym setup', category: 'basement' },
+      { src: '/assets/image19.jpeg', alt: 'Basement guest suite with bedroom', category: 'basement' },
+      { src: '/assets/image20.jpeg', alt: 'Basement wet bar and lounge', category: 'basement' },
+      { src: '/assets/image21.jpeg', alt: 'Basement office and workspace', category: 'basement' },
+      { src: '/assets/image22.jpeg', alt: 'Basement playroom for kids', category: 'basement' },
+      { src: '/assets/image23.jpeg', alt: 'Basement media room with seating', category: 'basement' },
+      { src: '/assets/image24.jpeg', alt: 'Basement bathroom addition', category: 'basement' },
+      { src: '/assets/image26.jpeg', alt: 'Basement storage solutions', category: 'basement' },
+      { src: '/assets/image27.jpeg', alt: 'Basement laundry room upgrade', category: 'basement' },
+
+      // Kitchen images (28-40)
+      { src: '/assets/image28.jpeg', alt: 'Modern kitchen with island', category: 'kitchen' },
+      { src: '/assets/image29.jpeg', alt: 'White shaker kitchen cabinets', category: 'kitchen' },
+      { src: '/assets/image30.jpeg', alt: 'Open concept kitchen and dining', category: 'kitchen' },
+      { src: '/assets/image31.jpeg', alt: 'Gourmet kitchen with professional appliances', category: 'kitchen' },
+      { src: '/assets/image32.jpeg', alt: 'Traditional kitchen with farmhouse sink', category: 'kitchen' },
+      { src: '/assets/image33.jpeg', alt: 'Contemporary kitchen with quartz counters', category: 'kitchen' },
+      { src: '/assets/image34.jpeg', alt: 'Kitchen with custom cabinetry', category: 'kitchen' },
+      { src: '/assets/image35.jpeg', alt: 'Bright kitchen with pendant lighting', category: 'kitchen' },
+      { src: '/assets/image36.jpeg', alt: 'Kitchen with breakfast bar', category: 'kitchen' },
+      { src: '/assets/image37.jpeg', alt: 'Luxury kitchen with wine fridge', category: 'kitchen' },
+      { src: '/assets/image38.jpeg', alt: 'Compact kitchen maximizing space', category: 'kitchen' },
+      { src: '/assets/image39.jpeg', alt: 'Kitchen with subway tile backsplash', category: 'kitchen' },
+      { src: '/assets/image40.jpeg', alt: 'Kitchen renovation with new flooring', category: 'kitchen' }
+    ];
+
+    // Initialize gallery
+    const galleryGrid = document.getElementById('galleryGrid');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modal-title');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalClose = document.getElementById('modalClose');
+    const categoryBtns = document.querySelectorAll('.category-btn');
+
+    // Render gallery items
+    function renderGallery(filter = 'all') {
+      galleryGrid.innerHTML = '';
+
+      const filteredImages = filter === 'all'
+        ? images
+        : images.filter(img => img.category === filter);
+
+      if (filteredImages.length === 0) {
+        galleryGrid.innerHTML = '<div class="empty-state">No images found in this category.</div>';
+        return;
+      }
+
+      filteredImages.forEach((image, index) => {
+        const item = document.createElement('figure');
+        item.className = 'gallery-item';
+        item.setAttribute('role', 'listitem');
+        item.setAttribute('tabindex', '0');
+        item.setAttribute('aria-label', `View ${image.alt} in full size`);
+
+        item.innerHTML = `
+          <div class="loading-spinner">
+            <div class="spinner"></div>
+          </div>
+          <img
+            class="gallery-img"
+            src="${image.src}"
+            alt="${image.alt}"
+            loading="lazy"
+          />
+          <div class="gallery-overlay">
+            <figcaption class="gallery-caption">${image.alt}</figcaption>
+            <div class="gallery-category">${image.category}</div>
+          </div>
+          <div class="zoom-icon">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v6m3-3H7" />
+            </svg>
+          </div>
+        `;
+
+        // Handle image load
+        const img = item.querySelector('.gallery-img');
+        img.addEventListener('load', () => {
+          item.querySelector('.loading-spinner').remove();
+        });
+
+        // Handle click to open modal
+        item.addEventListener('click', () => openModal(image));
+
+        // Handle keyboard
+        item.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openModal(image);
+          }
+        });
+
+        galleryGrid.appendChild(item);
+      });
+    }
+
+    // Open modal
+    function openModal(image) {
+      modalImg.src = image.src;
+      modalImg.alt = image.alt;
+      modalTitle.textContent = image.alt;
+      modalCategory.textContent = image.category;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      modalClose.focus();
+    }
+
+    // Close modal
+    function closeModal() {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Event listeners
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+
+    // Category filtering
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const category = btn.dataset.category;
+
+        // Update active state
+        categoryBtns.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-pressed', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
+
+        // Update ARIA label
+        const label = category === 'all' ? 'All' : category;
+        galleryGrid.setAttribute('aria-label', `${label} renovation photos`);
+
+        // Render filtered gallery
+        renderGallery(category);
+      });
+    });
+
+    // Initial render
+    renderGallery('all');
+  </script>
+</body>
+</html>
