@@ -279,8 +279,7 @@ export function Contact() {
                   <Clock className="w-5 h-5 text-primary-900 flex-shrink-0 mt-1" />
                   <div>
                     <div className="font-medium text-neutral-800">Office Hours</div>
-                    <p className="text-neutral-600">Mon-Fri: 8am - 6pm</p>
-                    <p className="text-neutral-600">Sat: 9am - 4pm</p>
+                    <p className="text-neutral-600">Mon-Sat: 6am - 5pm</p>
                     <p className="text-neutral-600">Sun: Closed</p>
                   </div>
                 </div>
