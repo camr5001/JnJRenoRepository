@@ -87,35 +87,6 @@ export function About() {
             </div>
           </div>
         </div>
-
-        <div className="mt-16 bg-neutral-800 rounded-2xl p-8 md:p-12">
-          <div className="grid md:grid-cols-3 gap-8 text-center text-white">
-            <div>
-              <h4 className="text-xl font-bold mb-3">Certifications</h4>
-              <ul className="space-y-2 text-neutral-300">
-                <li>Licensed General Contractor</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xl font-bold mb-3">Memberships</h4>
-              <ul className="space-y-2 text-neutral-300">
-                <li>National Association of Home Builders</li>
-                <li>Better Business Bureau</li>
-                <li>Local Chamber of Commerce</li>
-                <li>HomeAdvisor Elite Service</li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-xl font-bold mb-3">Insurance</h4>
-              <ul className="space-y-2 text-neutral-300">
-                <li>$2M General Liability</li>
-                <li>Workers Compensation</li>
-                <li>Builder's Risk Coverage</li>
-                <li>Bonded & Insured</li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
