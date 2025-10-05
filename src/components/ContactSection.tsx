@@ -22,8 +22,18 @@ export function ContactSection() {
     setIsSubmitting(true);
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      console.log('Form submitted:', formData);
+      const response = await fetch('https://hook.us2.make.com/dj8pjkdtslv4fwybrcll3lvxm61kl9t4', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
       setSubmitSuccess(true);
 
       setTimeout(() => {
