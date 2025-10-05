@@ -273,7 +273,7 @@ export function ContactSection() {
           </div>
 
           <div>
-            <div className="bg-gray-50 rounded-2xl shadow-lg p-8 h-full">
+            <div className="bg-gray-50 rounded-2xl shadow-lg p-8">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
 
               <div className="space-y-6">
