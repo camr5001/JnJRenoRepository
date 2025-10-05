@@ -72,7 +72,7 @@ export function Hero() {
                 <div className="space-y-4">
                   <div className="rounded-xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
                     <img
-                      src="/Assets 2/thanos-pal-61TfyNIrWmI-unsplash.jpeg"
+                      src="/assets/other/jnjflooring1.jpeg"
                       alt="Professional flooring installation"
                       className="w-full h-64 object-cover"
                     />
@@ -83,7 +83,7 @@ export function Hero() {
                   </div>
                   <div className="rounded-xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
                     <img
-                      src="/Assets 2/lotus-design-n-print-g51F6-WYzyU-unsplash.jpeg"
+                      src="/assets/other/jnjbathroom1.jpeg"
                       alt="Luxury bathroom renovation"
                       className="w-full h-64 object-cover"
                     />
@@ -96,7 +96,7 @@ export function Hero() {
                 <div className="space-y-4 pt-8">
                   <div className="rounded-xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
                     <img
-                      src="/Assets 2/point3d-commercial-imaging-ltd-TcnHgP7Nf5I-unsplash.jpeg"
+                      src="/assets/other/jnjbasement2.jpeg"
                       alt="Basement finishing"
                       className="w-full h-64 object-cover"
                     />
@@ -107,7 +107,7 @@ export function Hero() {
                   </div>
                   <div className="rounded-xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-300">
                     <img
-                      src="/Assets 2/lotus-design-n-print-I_QC1JICzA0-unsplash.jpeg"
+                      src="/assets/other/jnjkitchen1.jpeg"
                       alt="Whole home renovation"
                       className="w-full h-64 object-cover"
                     />

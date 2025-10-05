@@ -53,7 +53,7 @@ export function Services() {
       ],
       priceRange: '$30,000 - $75,000',
       timeline: '6-10 weeks',
-      image: '/Assets 2/ElkStone-Basements-1-scaled.jpeg'
+      image: '/assets/other/jnjphoto1.jpeg'
     },
     {
       icon: Sparkles,
