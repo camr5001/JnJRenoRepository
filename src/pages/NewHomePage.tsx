@@ -1,7 +1,10 @@
 import { Header } from '../components/Header';
 import { HeroSection } from '../components/HeroSection';
 import { ServicesSection } from '../components/ServicesSection';
+import { ProcessSection } from '../components/ProcessSection';
 import { AboutSection } from '../components/AboutSection';
+import { CTASection } from '../components/CTASection';
+import { GallerySection } from '../components/GallerySection';
 import { ContactSection } from '../components/ContactSection';
 import { Footer } from '../components/Footer';
 
@@ -11,7 +14,12 @@ export function NewHomePage() {
       <Header />
       <HeroSection />
       <ServicesSection />
+      <ProcessSection />
       <AboutSection />
+      <div className="max-w-7xl mx-auto">
+        <CTASection />
+      </div>
+      <GallerySection />
       <ContactSection />
       <Footer />
     </div>

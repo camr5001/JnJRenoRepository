@@ -57,40 +57,29 @@ export function HeroSection() {
           </div>
 
           <div className="relative hidden lg:block">
-            <div className="space-y-6">
-              <div className="bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-2xl hover:shadow-3xl transition-shadow animate-float" style={{animationDelay: '0s'}}>
+            <div className="grid grid-cols-2 gap-4 max-w-lg ml-auto">
+              <div className="space-y-4">
                 <img
                   src="/assets/other/jnjflooring1.jpeg"
                   alt="Professional flooring installation"
-                  className="w-full h-48 object-cover rounded-lg mb-4"
+                  className="w-full h-64 object-cover rounded-lg shadow-xl"
                 />
-                <h3 className="text-xl font-bold text-gray-900 mb-1">Flooring</h3>
-                <p className="text-gray-600">Premium Installation</p>
-              </div>
-
-              <div className="bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-2xl hover:shadow-3xl transition-shadow ml-auto max-w-sm animate-float" style={{animationDelay: '0.5s'}}>
                 <img
                   src="/assets/other/jnjbasement2.jpeg"
                   alt="Basement finishing"
-                  className="w-full h-48 object-cover rounded-lg mb-4"
+                  className="w-full h-48 object-cover rounded-lg shadow-xl"
                 />
-                <h3 className="text-xl font-bold text-gray-900 mb-1">Basement Finishing</h3>
-                <p className="text-gray-600">Complete Transform</p>
               </div>
-
-              <div className="absolute -right-12 top-1/2 -translate-y-1/2 bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-2xl hover:shadow-3xl transition-shadow animate-float" style={{animationDelay: '1s'}}>
+              <div className="space-y-4 mt-8">
                 <img
-                  src="/assets/other/jnjphoto1.jpeg"
+                  src="/assets/other/jnjbathroom1.jpeg"
                   alt="Luxury bathroom renovation"
-                  className="w-64 h-40 object-cover rounded-lg mb-4"
+                  className="w-full h-48 object-cover rounded-lg shadow-xl"
                 />
-              </div>
-
-              <div className="absolute -bottom-8 left-1/4 bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-2xl hover:shadow-3xl transition-shadow animate-float" style={{animationDelay: '1.5s'}}>
                 <img
                   src="/assets/other/jnjkitchen1.jpeg"
-                  alt="Whole home renovation"
-                  className="w-56 h-36 object-cover rounded-lg"
+                  alt="Kitchen renovation"
+                  className="w-full h-64 object-cover rounded-lg shadow-xl"
                 />
               </div>
             </div>

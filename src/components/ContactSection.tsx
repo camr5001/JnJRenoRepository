@@ -1,11 +1,13 @@
-import { Clock, Phone } from 'lucide-react';
+import { Clock, Phone, Calendar, MessageSquare, MapPin, Mail } from 'lucide-react';
 import { useState, FormEvent } from 'react';
 
 export function ContactSection() {
+  const [activeTab, setActiveTab] = useState<'consultation' | 'quote'>('consultation');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
+    serviceInterest: '',
     preferredDate: '',
     preferredTime: '',
     address: '',
@@ -19,24 +21,52 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Schedule Your Free Consultation
+            Let's Start Your <span className="text-[#2b4a8c]">Transformation</span>
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Ready to transform your home? Fill out the form below and we'll get back to you within 24 hours to discuss your project.
+            Schedule a free consultation to discuss your project. No obligations, just expert advice and a detailed estimate.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
-            <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+              <div className="flex border-b">
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('consultation')}
+                  className={`flex-1 px-6 py-4 font-semibold flex items-center justify-center gap-2 transition-colors ${
+                    activeTab === 'consultation'
+                      ? 'bg-[#2b4a8c] text-white'
+                      : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                  }`}
+                >
+                  <Calendar className="w-5 h-5" />
+                  Free Consultation
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTab('quote')}
+                  className={`flex-1 px-6 py-4 font-semibold flex items-center justify-center gap-2 transition-colors ${
+                    activeTab === 'quote'
+                      ? 'bg-[#2b4a8c] text-white'
+                      : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+                  }`}
+                >
+                  <MessageSquare className="w-5 h-5" />
+                  Request Quote
+                </button>
+              </div>
+
+              <form onSubmit={handleSubmit} className="p-8">
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Full Name
+                    Full Name <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -49,7 +79,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Email Address
+                    Email <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="email"
@@ -62,18 +92,38 @@ export function ContactSection() {
                 </div>
               </div>
 
-              <div className="mb-6">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  required
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2b4a8c] focus:border-transparent outline-none transition-all"
-                  placeholder="(416) 123-4567"
-                />
+              <div className="grid md:grid-cols-2 gap-6 mb-6">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Phone Number <span className="text-red-500">*</span>
+                  </label>
+                  <input
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2b4a8c] focus:border-transparent outline-none transition-all"
+                    placeholder="(647) 780-4433"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Service Interested In <span className="text-red-500">*</span>
+                  </label>
+                  <select
+                    required
+                    value={formData.serviceInterest}
+                    onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2b4a8c] focus:border-transparent outline-none transition-all"
+                  >
+                    <option value="">Select an option</option>
+                    <option value="kitchen">Kitchen Remodeling</option>
+                    <option value="bathroom">Bathroom Renovation</option>
+                    <option value="basement">Basement Finishing</option>
+                    <option value="whole-home">Whole-Home Renovation</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
               </div>
 
               <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -105,36 +155,35 @@ export function ContactSection() {
                 </div>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Property Address
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.address}
-                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2b4a8c] focus:border-transparent outline-none transition-all"
-                    placeholder="123 Main St, Peterborough, ON"
-                  />
-                  <p className="text-sm text-gray-500 mt-1">Optional - helps us prepare for your consultation</p>
-                </div>
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Estimated Budget
-                  </label>
-                  <select
-                    value={formData.budget}
-                    onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2b4a8c] focus:border-transparent outline-none transition-all"
-                  >
-                    <option value="">Select an option</option>
-                    <option value="under-25k">Under $25,000</option>
-                    <option value="25k-50k">$25,000 - $50,000</option>
-                    <option value="50k-100k">$50,000 - $100,000</option>
-                    <option value="100k-plus">$100,000+</option>
-                  </select>
-                </div>
+              <div className="mb-6">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Property Address
+                </label>
+                <input
+                  type="text"
+                  value={formData.address}
+                  onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2b4a8c] focus:border-transparent outline-none transition-all"
+                  placeholder="123 Main St, Peterborough, ON"
+                />
+                <p className="text-sm text-gray-500 mt-1">Optional - helps us prepare for your consultation</p>
+              </div>
+
+              <div className="mb-6">
+                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                  Estimated Budget
+                </label>
+                <select
+                  value={formData.budget}
+                  onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2b4a8c] focus:border-transparent outline-none transition-all"
+                >
+                  <option value="">Select an option</option>
+                  <option value="under-25k">Under $25,000</option>
+                  <option value="25k-50k">$25,000 - $50,000</option>
+                  <option value="50k-100k">$50,000 - $100,000</option>
+                  <option value="100k-plus">$100,000+</option>
+                </select>
               </div>
 
               <div className="mb-6">
@@ -161,39 +210,57 @@ export function ContactSection() {
               <p className="text-center text-sm text-gray-500 mt-4">
                 By submitting this form, you agree to be contacted by JNJ Renovations regarding your project.
               </p>
-            </form>
+              </form>
+            </div>
           </div>
 
-          <div className="space-y-6">
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <Clock className="w-6 h-6 text-[#2b4a8c]" />
-                <h3 className="text-xl font-bold text-gray-900">Office Hours</h3>
-              </div>
-              <div className="space-y-2 text-gray-600">
-                <p>Mon-Sat: 6am - 5pm</p>
-                <p>Sun: Closed</p>
-              </div>
-            </div>
+          <div>
+            <div className="bg-gray-50 rounded-2xl shadow-lg p-8 h-full">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h3>
 
-            <div className="bg-[#2b4a8c] text-white rounded-2xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold mb-4">Emergency Services</h3>
-              <p className="mb-6 leading-relaxed">
-                Have an urgent renovation issue? We offer priority scheduling for emergency repairs and critical projects.
-              </p>
-              <a
-                href="tel:6477804433"
-                className="block w-full bg-white text-[#2b4a8c] px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors font-medium text-center"
-              >
-                Call for Emergency Service
-              </a>
-            </div>
+              <div className="space-y-6">
+                <div className="flex items-start gap-3">
+                  <Phone className="w-5 h-5 text-[#2b4a8c] mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-1">Phone</p>
+                    <a href="tel:6477804433" className="text-gray-600 hover:text-[#2b4a8c]">
+                      (647) 780-4433
+                    </a>
+                  </div>
+                </div>
 
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Response Time</h3>
-              <div className="text-center">
-                <div className="text-5xl font-bold text-[#2b4a8c] mb-2">24 Hours</div>
-                <p className="text-gray-600">
+                <div className="flex items-start gap-3">
+                  <Mail className="w-5 h-5 text-[#2b4a8c] mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-1">Email</p>
+                    <a href="mailto:jnjrenovation@yahoo.com" className="text-gray-600 hover:text-[#2b4a8c]">
+                      jnjrenovation@yahoo.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-[#2b4a8c] mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-1">Service Area</p>
+                    <p className="text-gray-600">Greater Toronto Area & Surrounding Communities</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-[#2b4a8c] mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold text-gray-900 mb-1">Office Hours</p>
+                    <p className="text-gray-600">Mon-Sat: 6am - 5pm</p>
+                    <p className="text-gray-600">Sun: Closed</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 pt-8 border-t border-gray-200">
+                <h4 className="font-bold text-gray-900 mb-2">Response Time</h4>
+                <div className="text-4xl font-bold text-[#2b4a8c] mb-2">24 Hours</div>
+                <p className="text-sm text-gray-600">
                   We respond to all consultation requests within one business day
                 </p>
               </div>
