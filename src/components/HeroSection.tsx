@@ -28,7 +28,7 @@ export function HeroSection() {
                 <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
               <a
-                href="#services"
+                href="#gallery"
                 className="border-2 border-gray-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:border-gray-400 hover:bg-white/5 transition-all font-medium text-base sm:text-lg text-center"
               >
                 View Our Work
