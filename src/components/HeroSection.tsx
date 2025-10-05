@@ -63,13 +63,13 @@ export function HeroSection() {
                   src="/assets/other/jnjflooring1.jpeg"
                   alt="Professional flooring installation"
                   loading="lazy"
-                  className="w-full h-64 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
+                  className="w-full h-56 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
                 />
                 <img
                   src="/assets/other/jnjbasement2.jpeg"
                   alt="Basement finishing"
                   loading="lazy"
-                  className="w-full h-48 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
+                  className="w-full h-56 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
                 />
               </div>
               <div className="space-y-4 mt-8">
@@ -77,13 +77,13 @@ export function HeroSection() {
                   src="/assets/other/jnjbathroom1.jpeg"
                   alt="Luxury bathroom renovation"
                   loading="lazy"
-                  className="w-full h-48 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
+                  className="w-full h-56 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
                 />
                 <img
                   src="/assets/other/jnjkitchen1.jpeg"
                   alt="Kitchen renovation"
                   loading="lazy"
-                  className="w-full h-64 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
+                  className="w-full h-56 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
                 />
               </div>
             </div>
