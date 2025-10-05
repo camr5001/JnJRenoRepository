@@ -39,8 +39,7 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between sm:justify-end items-center gap-4 sm:gap-6 text-xs sm:text-sm">
           <a href="tel:6477804433" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <Phone className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
-            <span className="hidden xs:inline">(647) 780-4433</span>
-            <span className="xs:hidden">Call</span>
+            <span>(647) 780-4433</span>
           </a>
           <a href="mailto:jnjrenovation@yahoo.com" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <Mail className="w-3 h-3 sm:w-4 sm:h-4 flex-shrink-0" />
