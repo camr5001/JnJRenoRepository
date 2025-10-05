@@ -59,32 +59,56 @@ export function HeroSection() {
           <div className="relative hidden lg:block">
             <div className="grid grid-cols-2 gap-4 max-w-lg ml-auto">
               <div className="space-y-4">
-                <img
-                  src="/assets/other/jnjflooring1.jpeg"
-                  alt="Professional flooring installation"
-                  loading="lazy"
-                  className="w-full h-56 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
-                />
-                <img
-                  src="/assets/other/jnjbasement2.jpeg"
-                  alt="Basement finishing"
-                  loading="lazy"
-                  className="w-full h-56 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
-                />
+                <div className="relative">
+                  <img
+                    src="/assets/other/jnjflooring1.jpeg"
+                    alt="Professional flooring installation"
+                    loading="lazy"
+                    className="w-full h-56 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
+                  />
+                  <div className="absolute bottom-4 left-4 bg-white px-4 py-2 rounded-lg shadow-lg">
+                    <div className="font-semibold text-gray-900">Flooring</div>
+                    <div className="text-sm text-gray-600">Premium Installation</div>
+                  </div>
+                </div>
+                <div className="relative">
+                  <img
+                    src="/assets/other/jnjbasement2.jpeg"
+                    alt="Basement finishing"
+                    loading="lazy"
+                    className="w-full h-56 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
+                  />
+                  <div className="absolute bottom-4 left-4 bg-white px-4 py-2 rounded-lg shadow-lg">
+                    <div className="font-semibold text-gray-900">Basement Finishing</div>
+                    <div className="text-sm text-gray-600">Complete Transform</div>
+                  </div>
+                </div>
               </div>
               <div className="space-y-4 mt-8">
-                <img
-                  src="/assets/other/jnjbathroom1.jpeg"
-                  alt="Luxury bathroom renovation"
-                  loading="lazy"
-                  className="w-full h-56 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
-                />
-                <img
-                  src="/assets/other/jnjkitchen1.jpeg"
-                  alt="Kitchen renovation"
-                  loading="lazy"
-                  className="w-full h-56 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
-                />
+                <div className="relative">
+                  <img
+                    src="/assets/other/jnjbathroom1.jpeg"
+                    alt="Luxury bathroom renovation"
+                    loading="lazy"
+                    className="w-full h-56 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
+                  />
+                  <div className="absolute bottom-4 left-4 bg-white px-4 py-2 rounded-lg shadow-lg">
+                    <div className="font-semibold text-gray-900">Bathroom</div>
+                    <div className="text-sm text-gray-600">Luxury Renovation</div>
+                  </div>
+                </div>
+                <div className="relative">
+                  <img
+                    src="/assets/other/jnjkitchen1.jpeg"
+                    alt="Kitchen renovation"
+                    loading="lazy"
+                    className="w-full h-56 object-cover rounded-lg shadow-xl hover:shadow-2xl transition-shadow"
+                  />
+                  <div className="absolute bottom-4 left-4 bg-white px-4 py-2 rounded-lg shadow-lg">
+                    <div className="font-semibold text-gray-900">Kitchen</div>
+                    <div className="text-sm text-gray-600">Modern Design</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
