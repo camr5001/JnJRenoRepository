@@ -4,19 +4,19 @@ const services = [
   {
     title: 'Kitchen Remodeling',
     icon: ChefHat,
-    image: '/assets/Kitchen/image000000.JPG',
+    image: '/assets/Kitchen/lotus-design-n-print-I_QC1JICzA0-unsplash.jpeg',
     description: 'Transform the heart of your home with custom cabinetry, premium countertops, and modern appliances. We specialize in creating functional, beautiful kitchens that increase home value.',
   },
   {
     title: 'Bathroom Renovation',
     icon: Droplet,
-    image: '/assets/Bathroom/image000000.JPG',
+    image: '/assets/Bathroom/lotus-design-n-print-g51F6-WYzyU-unsplash.jpeg',
     description: 'Create your personal spa retreat with luxury fixtures, custom tile work, and smart storage solutions. From powder rooms to master suites, we deliver stunning results.',
   },
   {
     title: 'Basement Finishing',
     icon: Home,
-    image: '/assets/Basement/image000000.JPG',
+    image: '/assets/Basement/point3d-commercial-imaging-ltd-TcnHgP7Nf5I-unsplash.jpeg',
     description: 'Unlock valuable living space with professional basement finishing. Whether you want a home theater, office, or extra bedroom, we make it happen.',
     features: [
       'Waterproofing & moisture control',
