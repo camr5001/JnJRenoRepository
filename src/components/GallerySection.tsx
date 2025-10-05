@@ -1,14 +1,14 @@
 export function GallerySection() {
   const projects = [
-    { image: '/assets/Kitchen/image000000.JPG', title: 'Modern Kitchen Renovation', category: 'Kitchen' },
+    { image: '/assets/kitchen/jnjkitchen1.JPG', title: 'Modern Kitchen Renovation', category: 'Kitchen' },
     { image: '/assets/Bathroom/image000000.JPG', title: 'Luxury Bathroom Remodel', category: 'Bathroom' },
     { image: '/assets/Basement/image000000.JPG', title: 'Finished Basement', category: 'Basement' },
     { image: '/assets/Bathroom/image000001.JPG', title: 'Master Bath Suite', category: 'Bathroom' },
-    { image: '/assets/Kitchen/image000003.JPG', title: 'Contemporary Kitchen', category: 'Kitchen' },
+    { image: '/assets/kitchen/jnjkithen2.JPG', title: 'Contemporary Kitchen', category: 'Kitchen' },
     { image: '/assets/Bathroom/image000002.JPG', title: 'Spa Bathroom', category: 'Bathroom' },
     { image: '/assets/Basement/image000001.JPG', title: 'Entertainment Basement', category: 'Basement' },
     { image: '/assets/Bathroom/image000003.JPG', title: 'Guest Bathroom', category: 'Bathroom' },
-    { image: '/assets/Kitchen/image000004.JPG', title: 'Gourmet Kitchen', category: 'Kitchen' },
+    { image: '/assets/kitchen/jnjkitchen3.JPG', title: 'Gourmet Kitchen', category: 'Kitchen' },
     { image: '/assets/Bathroom/image000004.JPG', title: 'Powder Room', category: 'Bathroom' },
     { image: '/assets/Basement/image000002.JPG', title: 'Home Office Basement', category: 'Basement' },
     { image: '/assets/Bathroom/image000005.JPG', title: 'Designer Bathroom', category: 'Bathroom' },
