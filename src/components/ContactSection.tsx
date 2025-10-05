@@ -3,6 +3,8 @@ import { useState, FormEvent } from 'react';
 
 export function ContactSection() {
   const [activeTab, setActiveTab] = useState<'consultation' | 'quote'>('consultation');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,9 +17,34 @@ export function ContactSection() {
     message: '',
   });
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+
+    try {
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      console.log('Form submitted:', formData);
+      setSubmitSuccess(true);
+
+      setTimeout(() => {
+        setSubmitSuccess(false);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          serviceInterest: '',
+          preferredDate: '',
+          preferredTime: '',
+          address: '',
+          budget: '',
+          message: '',
+        });
+      }, 3000);
+    } catch (error) {
+      console.error('Form submission error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -73,8 +100,9 @@ export function ContactSection() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2b4a8c] focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2b4a8c] focus:border-transparent outline-none transition-all hover:border-gray-400"
                     placeholder="John Smith"
+                    autoComplete="name"
                   />
                 </div>
                 <div>
@@ -86,8 +114,9 @@ export function ContactSection() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2b4a8c] focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2b4a8c] focus:border-transparent outline-none transition-all hover:border-gray-400"
                     placeholder="john@example.com"
+                    autoComplete="email"
                   />
                 </div>
               </div>
@@ -102,8 +131,9 @@ export function ContactSection() {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2b4a8c] focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2b4a8c] focus:border-transparent outline-none transition-all hover:border-gray-400"
                     placeholder="(647) 780-4433"
+                    autoComplete="tel"
                   />
                 </div>
                 <div>
@@ -114,7 +144,7 @@ export function ContactSection() {
                     required
                     value={formData.serviceInterest}
                     onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2b4a8c] focus:border-transparent outline-none transition-all"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2b4a8c] focus:border-transparent outline-none transition-all hover:border-gray-400 cursor-pointer"
                   >
                     <option value="">Select an option</option>
                     <option value="kitchen">Kitchen Remodeling</option>
@@ -200,11 +230,29 @@ export function ContactSection() {
                 <p className="text-sm text-gray-500 mt-1">Optional - any details you can provide help us prepare better</p>
               </div>
 
+              {submitSuccess && (
+                <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800 text-center">
+                  <p className="font-semibold">Thank you for your request!</p>
+                  <p className="text-sm mt-1">We'll contact you within 24 hours.</p>
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="w-full bg-[#2b4a8c] text-white px-8 py-4 rounded-lg hover:bg-[#1e3870] transition-colors font-medium text-lg shadow-lg hover:shadow-xl"
+                disabled={isSubmitting}
+                className="w-full bg-[#2b4a8c] text-white px-8 py-4 rounded-lg hover:bg-[#1e3870] transition-all font-medium text-lg shadow-lg hover:shadow-xl disabled:opacity-60 disabled:cursor-not-allowed transform hover:-translate-y-0.5 active:translate-y-0"
               >
-                Schedule Free Consultation
+                {isSubmitting ? (
+                  <span className="flex items-center justify-center gap-2">
+                    <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Sending Request...
+                  </span>
+                ) : (
+                  'Schedule Free Consultation'
+                )}
               </button>
 
               <p className="text-center text-sm text-gray-500 mt-4">
