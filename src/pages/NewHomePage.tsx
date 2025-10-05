@@ -4,7 +4,6 @@ import { ServicesSection } from '../components/ServicesSection';
 import { ProcessSection } from '../components/ProcessSection';
 import { AboutSection } from '../components/AboutSection';
 import { CTASection } from '../components/CTASection';
-import { GallerySection } from '../components/GallerySection';
 import { ClientPhotosSection } from '../components/ClientPhotosSection';
 import { ContactSection } from '../components/ContactSection';
 import { Footer } from '../components/Footer';
@@ -20,7 +19,6 @@ export function NewHomePage() {
       <div className="max-w-7xl mx-auto">
         <CTASection />
       </div>
-      <GallerySection />
       <ClientPhotosSection />
       <ContactSection />
       <Footer />
