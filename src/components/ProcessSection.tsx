@@ -69,7 +69,7 @@ export function ProcessSection() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between items-center">
                       <span className="font-semibold text-gray-900">Duration:</span>
-                      <span className="text-gray-600">{step.duration}</span>
+                      <span className="text-gray-600 ml-2">{step.duration}</span>
                     </div>
                     <div className="pt-2 border-t border-gray-200">
                       <p className="font-semibold text-gray-900 mb-1">You Receive:</p>
