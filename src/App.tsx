@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
 import { ContactFormPage } from './pages/ContactFormPage';
+import AdminUploadPage from './pages/AdminUploadPage';
 import { SEO } from './components/SEO';
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/contact" element={<ContactFormPage />} />
+        <Route path="/admin/upload" element={<AdminUploadPage />} />
       </Routes>
     </Router>
   );
