@@ -57,6 +57,8 @@ export function ClientPhotosSection() {
       description: 'Modern kitchen remodels that combine style, functionality, and lasting value.',
       images: [
         '/assets/kitchen/image21.jpeg',
+        '/assets/kitchen/image30.jpeg',
+        '/assets/kitchen/image31.jpeg',
       ],
     },
   };
