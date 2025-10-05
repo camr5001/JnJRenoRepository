@@ -7,11 +7,11 @@ export function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
           <div>
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              About <span className="text-[#2b4a8c]">JNJ Renovations</span>
+              About <span className="text-[#2b4a8c]">JnJ RENOVATION</span>
             </h2>
             <div className="space-y-4 text-gray-600 leading-relaxed">
               <p>
-                For over 15 years, JNJ Renovations has been transforming houses into dream homes across the Greater Toronto Area. What started as a small family business has grown into one of the region's most trusted renovation companies.
+                For over 15 years, JnJ RENOVATION has been transforming houses into dream homes across the Greater Toronto Area. What started as a small family business has grown into one of the region's most trusted renovation companies.
               </p>
               <p>
                 Our team of skilled craftsmen, designers, and project managers brings decades of combined experience to every project. We're not just contractors—we're partners in bringing your vision to life.
@@ -37,18 +37,6 @@ export function AboutSection() {
                 <div>
                   <div className="text-4xl font-bold text-[#2b4a8c] mb-1">12+</div>
                   <div className="text-sm text-gray-700">Expert Team Members</div>
-                </div>
-              </div>
-            </div>
-            <div className="absolute -top-8 -right-8 bg-blue-100 rounded-2xl p-8 shadow-xl">
-              <div className="grid grid-cols-2 gap-8">
-                <div>
-                  <div className="text-4xl font-bold text-[#2b4a8c] mb-1">$8M+</div>
-                  <div className="text-sm text-gray-700">Projects Completed</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold text-[#2b4a8c] mb-1">A+</div>
-                  <div className="text-sm text-gray-700">BBB Rating</div>
                 </div>
               </div>
             </div>
