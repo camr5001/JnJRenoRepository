@@ -37,7 +37,7 @@ export function ContactSection() {
 
       console.log('Sending to Make.com:', payload);
 
-      const response = await fetch('https://hook.us2.make.com/sm4zkg0mo2tnkycrj7tmiof26mtv2q7z', {
+      const response = await fetch('https://hook.us2.make.com/dj8pjkdtslv4fwybrcll3lvxm61kl9t4', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
