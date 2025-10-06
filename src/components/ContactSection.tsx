@@ -22,13 +22,24 @@ export function ContactSection() {
     setIsSubmitting(true);
 
     try {
+      const formBody = new URLSearchParams();
+      formBody.append('name', formData.name);
+      formBody.append('email', formData.email);
+      formBody.append('phone', formData.phone);
+      formBody.append('serviceInterest', formData.serviceInterest);
+      formBody.append('preferredDate', formData.preferredDate);
+      formBody.append('preferredTime', formData.preferredTime);
+      formBody.append('address', formData.address);
+      formBody.append('budget', formData.budget);
+      formBody.append('message', formData.message);
+      formBody.append('formType', activeTab);
+
       const response = await fetch('https://hook.us2.make.com/dj8pjkdtslv4fwybrcll3lvxm61kl9t4', {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: JSON.stringify(formData),
+        body: formBody.toString(),
       });
 
       setSubmitSuccess(true);
