@@ -22,25 +22,30 @@ export function ContactSection() {
     setIsSubmitting(true);
 
     try {
-      const formBody = new URLSearchParams();
-      formBody.append('name', formData.name);
-      formBody.append('email', formData.email);
-      formBody.append('phone', formData.phone);
-      formBody.append('serviceInterest', formData.serviceInterest);
-      formBody.append('preferredDate', formData.preferredDate);
-      formBody.append('preferredTime', formData.preferredTime);
-      formBody.append('address', formData.address);
-      formBody.append('budget', formData.budget);
-      formBody.append('message', formData.message);
-      formBody.append('formType', activeTab);
+      const payload = {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        serviceInterest: formData.serviceInterest,
+        preferredDate: formData.preferredDate,
+        preferredTime: formData.preferredTime,
+        address: formData.address,
+        budget: formData.budget,
+        message: formData.message,
+        formType: activeTab,
+      };
 
-      const response = await fetch('https://hook.us2.make.com/dj8pjkdtslv4fwybrcll3lvxm61kl9t4', {
+      console.log('Sending to Make.com:', payload);
+
+      const response = await fetch('https://hook.us2.make.com/sm4zkg0mo2tnkycrj7tmiof26mtv2q7z', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
-        body: formBody.toString(),
+        body: JSON.stringify(payload),
       });
+
+      console.log('Response status:', response.status);
 
       setSubmitSuccess(true);
 
