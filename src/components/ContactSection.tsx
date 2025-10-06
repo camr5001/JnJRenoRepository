@@ -24,15 +24,12 @@ export function ContactSection() {
     try {
       const response = await fetch('https://hook.us2.make.com/dj8pjkdtslv4fwybrcll3lvxm61kl9t4', {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
       });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit form');
-      }
 
       setSubmitSuccess(true);
 
